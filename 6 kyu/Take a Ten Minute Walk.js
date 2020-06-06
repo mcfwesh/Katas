@@ -4,3 +4,14 @@
 Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!). */
 
 //SOLUTION
+function isValidWalk(walk) {
+  //insert brilliant code here
+  let obj = {};
+  for (let char of walk) {
+    obj[char] = obj[char] + 1 || 1;
+  }
+  return walk.length === 10 && obj["n"] === obj["s"] && obj["e"] === obj["w"]
+    ? true
+    : false;
+}
+isValidWalk(["n", "n", "n", "s", "n", "s", "n", "s", "n", "s"]);
