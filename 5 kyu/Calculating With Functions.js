@@ -23,10 +23,7 @@ function zero(x) {
   return 0;
 }
 function one(x) {
-  if (arguments.length) {
-    return Math.floor(eval(`1${x}`));
-  }
-  return 1;
+  expression();
 }
 function two(x) {
   if (arguments.length) {
