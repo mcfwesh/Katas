@@ -82,3 +82,54 @@ function dropElements(arr, func, s = false) {
   }
   return [];
 }
+
+//Flatten a nested array. You must account for varying levels of nesting.
+
+//e.g steamrollArray([1, [2], [3, [[4]]]]) should return [1, 2, 3, 4].
+
+function steamrollArray(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      newArr = newArr.concat(steamrollArray(arr[i]));
+    } else {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
+
+//Return an English translated sentence of the passed binary string.
+
+//The binary string will be space separated.
+
+function binaryAgent(str) {
+  let newWord = [];
+  for (let char of str.split(" ")) {
+    newWord.push(String.fromCharCode(parseInt(char, 2).toString()));
+  }
+  return newWord.join("");
+}
+binaryAgent(
+  "01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001"
+);
+
+//Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+//In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+
+function truthCheck(collection, pre) {
+  return collection.every((val) => val);
+}
+
+truthCheck(
+  [
+    { user: "Tinky-Winky", sex: "male" },
+    { user: "Dipsy", sex: "male" },
+    { user: "Laa-Laa", sex: "female" },
+    { user: "Po", sex: "female" },
+  ],
+  "sex"
+);
